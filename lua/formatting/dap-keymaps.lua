@@ -2,7 +2,7 @@ local dap_ok, dap = pcall(require, "dap")
 local dap_ui_ok, ui = pcall(require, "dapui")
 
 if not (dap_ok and dap_ui_ok) then
-  --require("notify")("nvim-dap or dap-ui not installed!", "warning")
+  require("notify")("nvim-dap or dap-ui not installed!", "warning")
   return
 end
 
@@ -25,7 +25,7 @@ vim.keymap.set("n", "<leader>di", dap.step_into, { desc = "Step Into" })
 vim.keymap.set("n", "<leader>do", dap.step_out, { desc = "Step Out" })
 vim.keymap.set("n", "<leader>dC", function()
   dap.clear_breakpoints()
-  --require("notify")("Breakpoints cleared", "warn")
+  require("notify")("Breakpoints cleared", "warn")
 end)
 
 -- Close debugger and clear breakpoints
@@ -34,5 +34,5 @@ vim.keymap.set("n", "<leader>de", function()
   ui.toggle({})
   dap.terminate()
   vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-w>=", false, true, true), "n", false)
-  --require("notify")("Debugger session ended", "warn")
+  require("notify")("Debugger session ended", "warn")
 end)

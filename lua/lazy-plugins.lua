@@ -7,6 +7,7 @@ require('lazy').setup({
   -- UI 
   'Mofiqul/vscode.nvim',
   'nvim-tree/nvim-web-devicons',
+  'rcarriga/nvim-notify',
 
   -- DAP
   'mfussenegger/nvim-dap',

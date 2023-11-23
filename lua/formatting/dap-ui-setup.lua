@@ -1,12 +1,12 @@
 local dap_ok, dap = pcall(require, "dap")
 local dap_ui_ok, ui = pcall(require, "dapui")
 if not (dap_ok and dap_ui_ok) then
-  --require("notify")("dap-ui not installed!", "warning")
+  require("notify")("dap-ui not installed!", "warning")
   return
 end
 
 ui.setup({
-  icons = { expanded = "▾", collapsed = "▸", current_frame = '*' }, 
+  icons = { expanded = "▾", collapsed = "▸", current_frame = '*' },
   mappings = {
     open = "o",
     remove = "d",
