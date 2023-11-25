@@ -25,6 +25,8 @@ require('lsp-setup')
 
 require('styling')
 
+require('dap-setup')
+
 require('formatting')
 
 -- vim: ts=2 sts=2 sw=2 et

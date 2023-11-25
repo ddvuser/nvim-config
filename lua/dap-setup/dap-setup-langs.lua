@@ -1,7 +1,4 @@
-local dap = require('dap')
-
-local pythonPath = vim.fn.expand('~/.virtualenvs/debugpy/bin/python')
-print("Python Path:", pythonPath)
+local dap = require("dap")
 
 dap.adapters.python = function(cb, config)
   if config.request == 'attach' then
@@ -53,3 +50,22 @@ dap.configurations.python = {
     end;
   },
 }
+
+dap.adapters.lldb = {
+    type = "executable",
+    command = "/usr/bin/lldb-vscode-14",
+    name = "lldb",
+}
+
+dap.configurations.c= {
+  {
+      name = "C/C++ Lauch",
+      type = "lldb",
+      request = "launch",
+      program = "${workspaceFolder}/file",
+      cwd = "${workspaceFolder}",
+      stopOnEntry = false,
+  },
+}
+dap.configurations.cpp = dap.configurations.c
+

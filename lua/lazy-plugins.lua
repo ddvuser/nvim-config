@@ -9,22 +9,25 @@ require('lazy').setup({
   'nvim-tree/nvim-web-devicons',
   'rcarriga/nvim-notify',
   'nvim-lua/lualine.nvim',
+  'nvim-tree/nvim-tree.lua',
 
   -- DAP
   'mfussenegger/nvim-dap',
   'rcarriga/nvim-dap-ui',
 
+  -- Mason
+  {
+  'williamboman/mason.nvim',
+  },
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
-  'nvim-tree/nvim-tree.lua',
 
   {
     -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
     dependencies = {
       -- Automatically install LSPs to stdpath for neovim
-      'williamboman/mason.nvim',
-      'williamboman/mason-lspconfig.nvim',
+     'williamboman/mason-lspconfig.nvim',
 
       -- Useful status updates for LSP
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
