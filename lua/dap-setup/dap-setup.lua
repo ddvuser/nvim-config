@@ -1,15 +1,12 @@
-local dap = require("dap")
-local dapui = require("dapui")
+local M = {}
 
-dapui.setup()
+M.setup = function()
+    local dapui = require("dapui")
 
-dap.listeners.after.event_initialized["dapui_config"] = function()
-  dapui.open()
-end
-dap.listeners.before.event_terminated["dapui_config"] = function()
-  dapui.close()
-end
-dap.listeners.before.event_exited["dapui_config"] = function()
-  dapui.close()
+    dapui.setup()
+
 end
 
+return M
+
+-- vim: ts=2 sts=2 sw=2 et

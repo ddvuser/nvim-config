@@ -27,7 +27,8 @@ require('lsp-setup')
 require('styling')
 
 -- DAP
-require('dap-setup')
+local dap_setup = require('dap-setup')
+dap_setup.setup()
 
 -- Formatting: Autoformat, CMP
 require('formatting')
