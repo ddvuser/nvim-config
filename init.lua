@@ -24,7 +24,8 @@ require('treesitter-setup')
 require('lsp-setup')
 
 -- Styling: Bufferline, Gitsigns, Lualine, NvimTree, VSCodeTheme
-require('styling')
+local styling_setup = require('styling')
+styling_setup.setup()
 
 -- DAP
 local dap_setup = require('dap-setup')

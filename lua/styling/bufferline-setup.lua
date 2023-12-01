@@ -1,13 +1,14 @@
-local bufferline = require('bufferline')
+local M = {}
 
-bufferline.setup{
-  options = {
-    mode = 'buffers',
-    style_preset = bufferline.style_preset.no_italic,
-    hover = {
-        enabled = true,
-        delay = 200,
-        reveal = {'close'}
-    },
-  }
-}
+M.setup = function()
+    local bufferline = require('bufferline')
+
+    bufferline.setup{
+      options = {
+        mode = 'buffers',
+        style_preset = bufferline.style_preset.no_italic,
+      },
+    }
+end
+
+return M
