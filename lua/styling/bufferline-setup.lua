@@ -7,6 +7,8 @@ M.setup = function()
       options = {
         mode = 'buffers',
         style_preset = bufferline.style_preset.no_italic,
+        diagnostics = 'nvim_lsp',
+        separator_style = 'slant',
       },
     }
 end

@@ -11,12 +11,11 @@ M.setup = function ()
       group_empty = true,
     },
     filters = {
-      dotfiles = true,
+      dotfiles = false,
     },
   })
 
   vim.keymap.set('n', '<c-n>', ':NvimTreeFindFile<CR>')
-
 end
 
 return M
