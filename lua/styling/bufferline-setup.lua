@@ -3,6 +3,13 @@ local M = {}
 M.setup = function()
     local bufferline = require('bufferline')
 
+    vim.keymap.set("n", "<leader>Bp",
+                    bufferline.pick,
+                    { desc = "Bufferline: Pick" })
+    vim.keymap.set("n", "<leader>Bc",
+                    bufferline.close_with_pick,
+                    { desc = "Bufferline: Close with Pick" })
+
     bufferline.setup{
       options = {
         mode = 'buffers',
