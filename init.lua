@@ -35,6 +35,7 @@ local dap_setup = require('dap-setup')
 dap_setup.setup()
 
 -- Formatting: Autoformat, CMP
-require('formatting')
+local formatting_setup = require('formatting')
+formatting_setup.setup()
 
 -- vim: ts=2 sts=2 sw=2 et
