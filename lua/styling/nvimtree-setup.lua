@@ -1,7 +1,6 @@
 local M = {}
 
-M.setup = function ()
-
+M.setup = function()
   require("nvim-tree").setup({
     sort_by = "case_sensitive",
     view = {
@@ -11,6 +10,7 @@ M.setup = function ()
       group_empty = true,
     },
     filters = {
+      git_ignored = false,
       dotfiles = false,
     },
   })
