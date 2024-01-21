@@ -1,6 +1,6 @@
 local M = {}
 
-M.setup = function ()
+M.setup = function()
   local dap = require("dap")
 
   dap.adapters["local-lua"] = {
@@ -51,7 +51,7 @@ M.setup = function ()
     else
       cb({
         type = 'executable',
-        command = vim.fn.expand('~/.virtualenvs/debugpy/bin/python'),
+        command = vim.fn.expand('~/.local/share/nvim/mason/packages/debugpy/venv/bin/python'),
         args = { '-m', 'debugpy.adapter' },
         options = {
           source_filetype = 'python',
@@ -63,12 +63,12 @@ M.setup = function ()
   dap.configurations.python = {
     {
       -- The first three options are required by nvim-dap
-      type = 'python';
-      request = 'launch';
-      name = "Launch file";
+      type = 'python',
+      request = 'launch',
+      name = "Launch file",
 
-      -- Options below are for debugpy 
-      program = "${file}"; -- This configuration will launch the current file if used.
+      -- Options below are for debugpy
+      program = "${file}", -- This configuration will launch the current file if used.
       pythonPath = function()
         -- debugpy supports launching an application with a different interpreter then the one used to launch debugpy itself.
         -- The code below looks for a `venv` or `.venv` folder in the current directly and uses the python within.
@@ -81,28 +81,40 @@ M.setup = function ()
         else
           return '/usr/bin/python3'
         end
-      end;
+      end,
     },
   }
 
-  dap.adapters.lldb = {
-      type = "executable",
-      command = "/usr/bin/lldb-vscode-14",
-      name = "lldb",
+  dap.adapters.cppdbg = {
+    id = 'cppdbg',
+    type = 'executable',
+    command = '/home/cheese/.local/share/nvim/mason/bin/OpenDebugAD7',
   }
-
-  dap.configurations.c= {
+  dap.configurations.cpp = {
     {
-        name = "C/C++ Lauch",
-        type = "lldb",
-        request = "launch",
-        program = "${workspaceFolder}/file",
-        cwd = "${workspaceFolder}",
-        stopOnEntry = false,
+      name = "Launch file",
+      type = "cppdbg",
+      request = "launch",
+      program = function()
+        return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+      end,
+      cwd = '${workspaceFolder}',
+      stopAtEntry = true,
+    },
+    {
+      name = 'Attach to gdbserver :1234',
+      type = 'cppdbg',
+      request = 'launch',
+      MIMode = 'gdb',
+      miDebuggerServerAddress = 'localhost:1234',
+      miDebuggerPath = '/usr/bin/gdb',
+      cwd = '${workspaceFolder}',
+      program = function()
+        return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+      end,
     },
   }
-  dap.configurations.cpp = dap.configurations.c
-
+  dap.configurations.c = dap.configurations.cpp
 end
 
 return M
