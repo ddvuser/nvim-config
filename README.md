@@ -32,6 +32,22 @@ Currently configured local-lua, debugpy and lldb debuggers. If you won't use it 
 
 #### Lua debugger
 
+Install lua:
+
+```bash
+sudo apt install lua5.4
+```
+
+Install local-lua-debugger-vscode, either via:
+
+```bash
+cd ~
+mkdir .virtualenvs && cd .virtualenvs
+git clone https://github.com/tomblind/local-lua-debugger-vscode && cd local-lua-debugger-vscode
+npm install
+npm run build
+```
+
 #### Python debugger
 
 To use debugpy inside nvim use this command: `:MasonInstall debugpy`
@@ -40,8 +56,8 @@ To use debugpy inside nvim use this command: `:MasonInstall debugpy`
 
 Install cpptools: `:MasonInstall cpptools`
 
-Then inside lua/dap-setup/dap-setup-cfg.lua
-Change your username inside command variable:
+Then inside lua/dap-setup/dap-setup-cfg.lua change your username inside command variable:
+
 ```lua
 dap.adapters.cppdbg = {
     id = 'cppdbg',
